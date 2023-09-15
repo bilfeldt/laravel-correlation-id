@@ -152,7 +152,7 @@ private function getGlobalLogContext(): array
 }
 ```
 
-Alternatively if you do not wanna share all the global log context, simply fetch the IDs from the `request()` helper using the macros described above:
+Alternatively if you do not want to share all the global log context, simply fetch the IDs from the `request()` helper using the macros described above:
 
 ```php
 // app/Exceptions/Handler.php
@@ -173,12 +173,9 @@ protected function context(): array
 
 ### Passing Correlation ID and Request ID to queued jobs
 
-Any queued job that is dispatched during a request will be picked up by another process. Hence the `Request` object will not have the Correlation ID per default.
+This package make sure that the _Correlation ID_ and the _Request ID_ are passed to the payload of queued jobs which can be retreived again using `$job->payload()['data']`.
 
-TODO: HOW CAN WE PASS THE CORRELATION ID AND REQUEST ID TO THE QUEUED JOBS AUTOMATICALLY DURING DISPATCH?
-
-TODO: HOW CAN WE AUTOMATICALLY FETCH THEM WHEN A QUEUED JOB IS BEING HANDLED AND POPULATE THEM INTO THE REQUEST OBJECT?
-
+Just before a queued job is being processed, then we extract the _Correlation ID_ and the _Request ID_ from the payload and sets those on the `Illuminate\Http\Request` instance, so that any subsequent jobs that could get dispatched will also have them attached.
 
 ## Testing
 
