@@ -88,9 +88,9 @@ protected $middleware = [
 This package registers a few macros on the `Illuminate\Http\Request` class:
 
 ```php
-$request->getCorrelationId() // UUID or null if not assigned
+$request->getCorrelationId(); // UUID or null if not assigned
 
-$request->getClientRequestId() // The `Request-ID` provided by the client in the header `Request-ID` if any is provided
+$request->getClientRequestId(); // The `Request-ID` provided by the client in the header `Request-ID` if any is provided
 ```
 
 ### Add global log context
