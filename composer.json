@@ -1,0 +1,56 @@
+{
+    "name": "bilfeldt/laravel-correlation-id",
+    "description": "Deal with Request-ID and Correlation-ID in Laravel applications",
+    "keywords": [
+        "bilfeldt",
+        "Correlation ID",
+	"Request ID"
+    ],
+    "homepage": "https://github.com/bilfeldt/laravel-correlation-id",
+    "license": "MIT",
+    "type": "library",
+    "support": {
+        "issues": "https://github.com/bilfeldt/laravel-correlation-id/issues",
+        "source": "https://github.com/bilfeldt/laravel-correlation-id"
+    },
+    "authors": [
+        {
+            "name": "Anders Bilfeldt",
+            "email": "abilfeldt@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "~8.2",
+        "illuminate/contracts": "^10.0",
+    },
+    "require-dev": {
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0",
+    },
+    "autoload": {
+        "psr-4": {
+            "Bilfeldt\\LaravelCorrelationId\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bilfeldt\\LaravelCorrelationId\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Bilfeldt\\LaravelCorrelationId\\LaravelCorrelationIdServiceProvider"
+            ]
+        }
+    }
+}
