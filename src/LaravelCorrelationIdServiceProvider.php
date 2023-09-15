@@ -15,6 +15,7 @@ class LaravelCorrelationIdServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Inspired by: https://james.brooks.page/blog/injecting-additional-data-into-laravel-queued-jobs
         Queue::createPayloadUsing(function ($connection, $queue, $payload) {
             if (! isset($payload['data']['correlation_id'])) {
                 $payload['data']['correlation_id'] = request()->getCorrelationId();

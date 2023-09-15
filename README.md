@@ -198,6 +198,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Credits
 
 - [Anders Bilfeldt](https://github.com/bilfeldt)
+- [James Brooks](https://james.brooks.page/blog/injecting-additional-data-into-laravel-queued-jobs): For his blog post on how to inject additional data into Laravel queued jobs.
 - [All Contributors](../../contributors)
 
 ## License
