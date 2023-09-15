@@ -18,9 +18,9 @@ class LogContextMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        Log::withContext([
-            'Correlation-ID' => $request->getCorrelationId(),
-            'Response-ID' => $request->getClientResponseId(),
+        Log::shareContext([
+            'correlation_id' => $request->getCorrelationId(),
+            'client_request_id' => $request->getClientRequestId(),
         ]);
 
         return $next($request);
