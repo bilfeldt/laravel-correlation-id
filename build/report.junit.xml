@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/phpunit.xml.dist" tests="5" assertions="10" errors="0" failures="0" skipped="0" time="0.016464">
+    <testsuite name="Test Suite" tests="5" assertions="10" errors="0" failures="0" skipped="0" time="0.016464">
+      <testsuite name="Bilfeldt\LaravelCorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.015777">
+        <testcase name="test_adds_response_correlation_id_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" line="29" class="Bilfeldt\LaravelCorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Unit.CorrelationIdMiddlewareTest" assertions="2" time="0.015420"/>
+        <testcase name="test_adds_request_correlation_id_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" line="14" class="Bilfeldt\LaravelCorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Unit.CorrelationIdMiddlewareTest" assertions="2" time="0.000357"/>
+      </testsuite>
+      <testsuite name="Bilfeldt\LaravelCorrelationId\Tests\Features\RequestMacroTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.000308">
+        <testcase name="test_get_correlation_id_macro" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="10" class="Bilfeldt\LaravelCorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Features.RequestMacroTest" assertions="2" time="0.000189"/>
+        <testcase name="test_get_client_request_id_macro" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="21" class="Bilfeldt\LaravelCorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Features.RequestMacroTest" assertions="2" time="0.000119"/>
+      </testsuite>
+      <testsuite name="Bilfeldt\LaravelCorrelationId\Tests\Unit\RequestIdMiddlewareTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/RequestIdMiddlewareTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.000379">
+        <testcase name="test_adds_request_id_to_response_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/RequestIdMiddlewareTest.php" line="14" class="Bilfeldt\LaravelCorrelationId\Tests\Unit\RequestIdMiddlewareTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Unit.RequestIdMiddlewareTest" assertions="2" time="0.000379"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>

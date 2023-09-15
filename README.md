@@ -124,6 +124,54 @@ protected $middleware = [
 ];
 ```
 
+### Add global context to error reporting
+
+It is possible to add both the _Correlation ID_ and the _Request ID_ to the global error reporting context so that any error reporting once those are added will automatically have the id's attached as context.
+
+If the variables have already been added to the log context, then I recommend merging all the global log context to the error reporting context overriding the `context` method of your application's `App\Exceptions\Handler`:
+
+```php
+// app/Exceptions/Handler.php
+
+/**
+ * Get the default context variables for logging.
+ *
+ * @return array<string, mixed>
+ */
+protected function context(): array
+{
+    return array_merge(parent::context(), $this->getGlobalLogContext());
+}
+
+private function getGlobalLogContext(): array
+{
+    try {
+        return Log::sharedContext();
+    } catch (\Throwable $e) {
+        return [];
+    }
+}
+```
+
+Alternatively if you do not wanna share all the global log context, simply fetch the IDs from the `request()` helper using the macros described above:
+
+```php
+// app/Exceptions/Handler.php
+
+/**
+ * Get the default context variables for logging.
+ *
+ * @return array<string, mixed>
+ */
+protected function context(): array
+{
+    return array_merge(parent::context(), [
+        'correlation_id' => request()->getCorrelationId(),
+        'request_id' => request()->getClientRequestId(),
+    ]);
+}
+```
+
 ### Passing Correlation ID and Request ID to queued jobs
 
 Any queued job that is dispatched during a request will be picked up by another process. Hence the `Request` object will not have the Correlation ID per default.

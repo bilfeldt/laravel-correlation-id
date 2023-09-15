@@ -22,11 +22,12 @@
     ],
     "require": {
         "php": "~8.2",
-        "illuminate/contracts": "^10.0",
+        "illuminate/contracts": "^10.0"
     },
     "require-dev": {
+        "nunomaduro/collision": "^7.8",
         "orchestra/testbench": "^8.0",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^10.0"
     },
     "autoload": {
         "psr-4": {
@@ -39,7 +40,7 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
+        "test": "vendor/bin/testbench package:test",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
 
     },
@@ -52,5 +53,7 @@
                 "Bilfeldt\\LaravelCorrelationId\\LaravelCorrelationIdServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
