@@ -1,6 +1,6 @@
 <?php
 
-namespace Bilfeldt\LaravelCorrelationId;
+namespace Bilfeldt\CorrelationId;
 
 use Illuminate\Http\Request;
 use Illuminate\Queue\Events\JobProcessing;

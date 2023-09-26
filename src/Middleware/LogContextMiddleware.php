@@ -1,6 +1,6 @@
 <?php
 
-namespace Bilfeldt\LaravelCorrelationId\Middleware;
+namespace Bilfeldt\CorrelationId\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

@@ -1,8 +1,7 @@
 <?php
 
-namespace Bilfeldt\LaravelCorrelationId\Tests;
-use Bilfeldt\LaravelCorrelationId\CorrelationIdServiceProvider;
-use Illuminate\Database\Eloquent\Factories\Factory;
+namespace Bilfeldt\CorrelationId\Tests;
+use Bilfeldt\CorrelationId\CorrelationIdServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra

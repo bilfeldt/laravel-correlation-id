@@ -1,8 +1,8 @@
 <?php
 
-namespace Bilfeldt\LaravelCorrelationId\Middleware;
+namespace Bilfeldt\CorrelationId\Middleware;
 
-use Bilfeldt\LaravelCorrelationId\CorrelationIdServiceProvider;
+use Bilfeldt\CorrelationId\CorrelationIdServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;

@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Bilfeldt\\LaravelCorrelationId\\": "src"
+            "Bilfeldt\\CorrelationId\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Bilfeldt\\LaravelCorrelationId\\Tests\\": "tests"
+            "Bilfeldt\\CorrelationId\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -50,7 +50,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Bilfeldt\\LaravelCorrelationId\\CorrelationIdServiceProvider"
+                "Bilfeldt\\CorrelationId\\CorrelationIdServiceProvider"
             ]
         }
     },

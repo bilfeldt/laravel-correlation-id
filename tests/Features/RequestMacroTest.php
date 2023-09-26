@@ -1,8 +1,8 @@
 <?php
 
-namespace Bilfeldt\LaravelCorrelationId\Tests\Features;
+namespace Bilfeldt\CorrelationId\Tests\Features;
 
-use Bilfeldt\LaravelCorrelationId\Tests\TestCase;
+use Bilfeldt\CorrelationId\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 

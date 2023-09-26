@@ -1,9 +1,9 @@
 <?php
 
-namespace Bilfeldt\LaravelCorrelationId\Tests\Unit;
+namespace Bilfeldt\CorrelationId\Tests\Unit;
 
-use Bilfeldt\LaravelCorrelationId\Middleware\LogContextMiddleware;
-use Bilfeldt\LaravelCorrelationId\Tests\TestCase;
+use Bilfeldt\CorrelationId\Middleware\LogContextMiddleware;
+use Bilfeldt\CorrelationId\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
