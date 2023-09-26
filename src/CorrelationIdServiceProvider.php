@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 
-class LaravelCorrelationIdServiceProvider extends ServiceProvider
+class CorrelationIdServiceProvider extends ServiceProvider
 {
     protected const PAYLOAD_KEY_CORRELATION_ID = 'correlation_id';
     protected const PAYLOAD_KEY_CLIENT_REQUEST_ID = 'client_request_id';
@@ -112,7 +112,7 @@ class LaravelCorrelationIdServiceProvider extends ServiceProvider
         }
 
         Request::macro('getCorrelationId', function (): ?string {
-            return $this->header(LaravelCorrelationIdServiceProvider::getCorrelationIdHeaderName());
+            return $this->header(CorrelationIdServiceProvider::getCorrelationIdHeaderName());
         });
     }
 
@@ -123,7 +123,7 @@ class LaravelCorrelationIdServiceProvider extends ServiceProvider
         }
 
         Request::macro('getClientRequestId', function (): ?string {
-            return $this->header(LaravelCorrelationIdServiceProvider::getClientRequestIdHeaderName());
+            return $this->header(CorrelationIdServiceProvider::getClientRequestIdHeaderName());
         });
     }
 }

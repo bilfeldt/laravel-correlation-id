@@ -2,7 +2,7 @@
 
 namespace Bilfeldt\LaravelCorrelationId\Middleware;
 
-use Bilfeldt\LaravelCorrelationId\LaravelCorrelationIdServiceProvider;
+use Bilfeldt\LaravelCorrelationId\CorrelationIdServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -19,11 +19,11 @@ class CorrelationIdMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($this->shouldOverride($request) || ! $request->hasHeader(LaravelCorrelationIdServiceProvider::getCorrelationIdHeaderName())) {
-            $request->headers->set(LaravelCorrelationIdServiceProvider::getCorrelationIdHeaderName(), $this->generateCorrelationId($request));
+        if ($this->shouldOverride($request) || ! $request->hasHeader(CorrelationIdServiceProvider::getCorrelationIdHeaderName())) {
+            $request->headers->set(CorrelationIdServiceProvider::getCorrelationIdHeaderName(), $this->generateCorrelationId($request));
         }
 
-        return $next($request)->header(LaravelCorrelationIdServiceProvider::getCorrelationIdHeaderName(), $request->getCorrelationId());
+        return $next($request)->header(CorrelationIdServiceProvider::getCorrelationIdHeaderName(), $request->getCorrelationId());
     }
 
     protected function generateCorrelationId(Request $request): string
