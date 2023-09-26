@@ -1,17 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/phpunit.xml.dist" tests="5" assertions="10" errors="0" failures="0" skipped="0" time="0.016464">
-    <testsuite name="Test Suite" tests="5" assertions="10" errors="0" failures="0" skipped="0" time="0.016464">
-      <testsuite name="Bilfeldt\LaravelCorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.015777">
-        <testcase name="test_adds_response_correlation_id_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" line="29" class="Bilfeldt\LaravelCorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Unit.CorrelationIdMiddlewareTest" assertions="2" time="0.015420"/>
-        <testcase name="test_adds_request_correlation_id_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" line="14" class="Bilfeldt\LaravelCorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Unit.CorrelationIdMiddlewareTest" assertions="2" time="0.000357"/>
+  <testsuite name="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/phpunit.xml.dist" tests="11" assertions="1" errors="10" failures="0" skipped="0" time="0.013445">
+    <testsuite name="Test Suite" tests="11" assertions="1" errors="10" failures="0" skipped="0" time="0.013445">
+      <testsuite name="Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" tests="6" assertions="1" errors="5" failures="0" skipped="0" time="0.013445">
+        <testcase name="test_request_macro_get_correlation_id_is_registered" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="11" class="Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.CorrelationId.Tests.Features.RequestMacroTest" assertions="1" time="0.013445"/>
+        <testcase name="test_request_macro_get_client_request_id_is_registered" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="27" class="Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.CorrelationId.Tests.Features.RequestMacroTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest::test_request_macro_get_client_request_id_is_registered
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
+        <testcase name="test_get_correlation_id_macro" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="16" class="Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.CorrelationId.Tests.Features.RequestMacroTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest::test_get_correlation_id_macro
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
+        <testcase name="test_get_client_request_id_macro" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="32" class="Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.CorrelationId.Tests.Features.RequestMacroTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest::test_get_client_request_id_macro
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
+        <testcase name="test_request_macro_get_unique_id_is_registered" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="43" class="Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.CorrelationId.Tests.Features.RequestMacroTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest::test_request_macro_get_unique_id_is_registered
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
+        <testcase name="test_request_macro_get_unique_id" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="48" class="Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.CorrelationId.Tests.Features.RequestMacroTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Features\RequestMacroTest::test_request_macro_get_unique_id
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
       </testsuite>
-      <testsuite name="Bilfeldt\LaravelCorrelationId\Tests\Features\RequestMacroTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" tests="2" assertions="4" errors="0" failures="0" skipped="0" time="0.000308">
-        <testcase name="test_get_correlation_id_macro" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="10" class="Bilfeldt\LaravelCorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Features.RequestMacroTest" assertions="2" time="0.000189"/>
-        <testcase name="test_get_client_request_id_macro" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Features/RequestMacroTest.php" line="21" class="Bilfeldt\LaravelCorrelationId\Tests\Features\RequestMacroTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Features.RequestMacroTest" assertions="2" time="0.000119"/>
+      <testsuite name="Bilfeldt\CorrelationId\Tests\Unit\RequestIdMiddlewareTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/RequestIdMiddlewareTest.php" tests="1" assertions="0" errors="1" failures="0" skipped="0" time="0.000000">
+        <testcase name="test_adds_request_id_to_response_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/RequestIdMiddlewareTest.php" line="14" class="Bilfeldt\CorrelationId\Tests\Unit\RequestIdMiddlewareTest" classname="Bilfeldt.CorrelationId.Tests.Unit.RequestIdMiddlewareTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Unit\RequestIdMiddlewareTest::test_adds_request_id_to_response_header
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
       </testsuite>
-      <testsuite name="Bilfeldt\LaravelCorrelationId\Tests\Unit\RequestIdMiddlewareTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/RequestIdMiddlewareTest.php" tests="1" assertions="2" errors="0" failures="0" skipped="0" time="0.000379">
-        <testcase name="test_adds_request_id_to_response_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/RequestIdMiddlewareTest.php" line="14" class="Bilfeldt\LaravelCorrelationId\Tests\Unit\RequestIdMiddlewareTest" classname="Bilfeldt.LaravelCorrelationId.Tests.Unit.RequestIdMiddlewareTest" assertions="2" time="0.000379"/>
+      <testsuite name="Bilfeldt\CorrelationId\Tests\Unit\LogContextMiddlewareTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/LogContextMiddlewareTest.php" tests="2" assertions="0" errors="2" failures="0" skipped="0" time="0.000000">
+        <testcase name="test_adds_request_correlation_id_to_log_context" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/LogContextMiddlewareTest.php" line="14" class="Bilfeldt\CorrelationId\Tests\Unit\LogContextMiddlewareTest" classname="Bilfeldt.CorrelationId.Tests.Unit.LogContextMiddlewareTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Unit\LogContextMiddlewareTest::test_adds_request_correlation_id_to_log_context
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
+        <testcase name="test_adds_client_request_id_to_log_context" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/LogContextMiddlewareTest.php" line="32" class="Bilfeldt\CorrelationId\Tests\Unit\LogContextMiddlewareTest" classname="Bilfeldt.CorrelationId.Tests.Unit.LogContextMiddlewareTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Unit\LogContextMiddlewareTest::test_adds_client_request_id_to_log_context
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
+      </testsuite>
+      <testsuite name="Bilfeldt\CorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" tests="2" assertions="0" errors="2" failures="0" skipped="0" time="0.000000">
+        <testcase name="test_adds_response_correlation_id_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" line="29" class="Bilfeldt\CorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" classname="Bilfeldt.CorrelationId.Tests.Unit.CorrelationIdMiddlewareTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Unit\CorrelationIdMiddlewareTest::test_adds_response_correlation_id_header
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
+        <testcase name="test_adds_request_correlation_id_header" file="/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/tests/Unit/CorrelationIdMiddlewareTest.php" line="14" class="Bilfeldt\CorrelationId\Tests\Unit\CorrelationIdMiddlewareTest" classname="Bilfeldt.CorrelationId.Tests.Unit.CorrelationIdMiddlewareTest" assertions="0" time="0.000000">
+          <error type="LogicException">Bilfeldt\CorrelationId\Tests\Unit\CorrelationIdMiddlewareTest::test_adds_request_correlation_id_header
+LogicException: Request::getUniqueId() macro already exists
+
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:96
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/src/CorrelationIdServiceProvider.php:48
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:768
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/ProviderRepository.php:75
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Application.php:745
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterProviders.php:17
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:359
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/CreatesApplication.php:228
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:118
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/Concerns/Testing.php:86
+/Users/andersbilfeldt/github.com/bilfeldt/laravel-correlation-id/vendor/orchestra/testbench-core/src/TestCase.php:50</error>
+        </testcase>
       </testsuite>
     </testsuite>
   </testsuite>
