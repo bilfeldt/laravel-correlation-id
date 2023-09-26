@@ -1,6 +1,6 @@
 <?php
 
-namespace Bilfeldt\CorrelationId\Tests\Features;
+namespace Bilfeldt\CorrelationId\Tests\Feature;
 
 use Bilfeldt\CorrelationId\Tests\TestCase;
 use Illuminate\Http\Request;

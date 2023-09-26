@@ -3,10 +3,10 @@
 namespace Bilfeldt\CorrelationId\Tests\Unit;
 
 use Bilfeldt\CorrelationId\Middleware\LogContextMiddleware;
-use Bilfeldt\CorrelationId\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
+use PHPUnit\Framework\TestCase;
 
 class LogContextMiddlewareTest extends TestCase
 {
