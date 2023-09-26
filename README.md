@@ -90,7 +90,9 @@ This package registers a few macros on the `Illuminate\Http\Request` class:
 ```php
 $request->getCorrelationId(); // UUID or null if not assigned
 
-$request->getClientRequestId(); // The `Request-ID` provided by the client in the header `Request-ID` if any is provided
+$request->getClientRequestId(); // The `Request-ID` header if provided by the client
+
+$request->getUniqueId(); // Unique UUID for each request: 94d0e2d6-4cc6-449c-9140-80bca47d29b4
 ```
 
 ### Add global log context
@@ -166,7 +168,8 @@ protected function context(): array
 {
     return array_merge(parent::context(), [
         'correlation_id' => request()->getCorrelationId(),
-        'request_id' => request()->getClientRequestId(),
+        'client_request_id' => request()->getClientRequestId(),
+        'request_id' => request()->getUniqueId(),
     ]);
 }
 ```
