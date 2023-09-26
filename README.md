@@ -45,7 +45,7 @@ As it can be tricky to create _Correlation ID_ on the server level and this is s
  * @var array<int, class-string|string>
  */
 protected $middleware = [
-    \Bilfeldt\Middleware\CorrelationIdMiddleware::class, // <!-- Add this globally as the first toutchpoint
+    \Bilfeldt\LaravelCorrelationId\Middleware\CorrelationIdMiddleware::class, // <!-- Add this globally as the first toutchpoint
     // \App\Http\Middleware\TrustHosts::class,
     \App\Http\Middleware\TrustProxies::class,
     \Illuminate\Http\Middleware\HandleCors::class,
@@ -71,8 +71,8 @@ If the client provides a _Request ID_ in the request header, then it is good pra
  * @var array<int, class-string|string>
  */
 protected $middleware = [
-    \Bilfeldt\Middleware\CorrelationIdMiddleware::class,
-    \Bilfeldt\Middleware\RequestIdMiddleware::class, // <!-- Add this globally
+    \Bilfeldt\LaravelCorrelationId\Middleware\CorrelationIdMiddleware::class,
+    \Bilfeldt\LaravelCorrelationId\Middleware\ClientRequestIdMiddleware::class, // <!-- Add this globally
     // \App\Http\Middleware\TrustHosts::class,
     \App\Http\Middleware\TrustProxies::class,
     \Illuminate\Http\Middleware\HandleCors::class,
@@ -110,9 +110,9 @@ It is recommended to add them to the logging context just after assigning them t
  * @var array<int, class-string|string>
  */
 protected $middleware = [
-    \Bilfeldt\Middleware\CorrelationIdMiddleware::class,
-    \Bilfeldt\Middleware\RequestIdMiddleware::class,
-    \Bilfeldt\Middleware\LogContextMiddleware::class, // <!-- Add this globally AFTER assigning Correlation ID and Request ID.
+    \Bilfeldt\LaravelCorrelationId\Middleware\CorrelationIdMiddleware::class,
+    \Bilfeldt\LaravelCorrelationId\Middleware\ClientRequestIdMiddleware::class,
+    \Bilfeldt\LaravelCorrelationId\Middleware\LogContextMiddleware::class, // <!-- Add this globally AFTER assigning Correlation ID and Request ID.
     // \App\Http\Middleware\TrustHosts::class,
     \App\Http\Middleware\TrustProxies::class,
     \Illuminate\Http\Middleware\HandleCors::class,

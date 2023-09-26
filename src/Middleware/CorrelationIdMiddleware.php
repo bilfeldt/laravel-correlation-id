@@ -2,6 +2,7 @@
 
 namespace Bilfeldt\LaravelCorrelationId\Middleware;
 
+use Bilfeldt\LaravelCorrelationId\LaravelCorrelationIdServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -9,8 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CorrelationIdMiddleware
 {
-    private const HEADER_NAME = 'Correlation-ID';
-
     /**
      * Handle an incoming request.
      *
@@ -20,13 +19,20 @@ class CorrelationIdMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $request->headers->set(self::HEADER_NAME, $this->generateCorrelationId($request));
+        if ($this->shouldOverride($request) || ! $request->hasHeader(LaravelCorrelationIdServiceProvider::getCorrelationIdHeaderName())) {
+            $request->headers->set(LaravelCorrelationIdServiceProvider::getCorrelationIdHeaderName(), $this->generateCorrelationId($request));
+        }
 
-        return $next($request)->header(self::HEADER_NAME, $request->headers->get(self::HEADER_NAME));
+        return $next($request)->header(LaravelCorrelationIdServiceProvider::getCorrelationIdHeaderName(), $request->getCorrelationId());
     }
 
     protected function generateCorrelationId(Request $request): string
     {
         return Str::orderedUuid();
+    }
+
+    protected function shouldOverride(Request $request): bool
+    {
+        return config('correlation-id.correlation_override');
     }
 }

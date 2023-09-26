@@ -2,14 +2,13 @@
 
 namespace Bilfeldt\LaravelCorrelationId\Middleware;
 
+use Bilfeldt\LaravelCorrelationId\LaravelCorrelationIdServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RequestIdMiddleware
+class ClientRequestIdMiddleware
 {
-    private const HEADER_NAME = 'Request-ID';
-
     /**
      * Handle an incoming request.
      *
@@ -19,6 +18,6 @@ class RequestIdMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request)->header(self::HEADER_NAME, $request->headers->get(self::HEADER_NAME));
+        return $next($request)->header(LaravelCorrelationIdServiceProvider::getClientRequestIdHeaderName(), $request->getClientRequestId());
     }
 }

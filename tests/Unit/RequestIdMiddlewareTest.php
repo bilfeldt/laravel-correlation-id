@@ -2,7 +2,7 @@
 
 namespace Bilfeldt\LaravelCorrelationId\Tests\Unit;
 
-use Bilfeldt\LaravelCorrelationId\Middleware\RequestIdMiddleware;
+use Bilfeldt\LaravelCorrelationId\Middleware\ClientRequestIdMiddleware;
 use Bilfeldt\LaravelCorrelationId\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,7 +17,7 @@ class RequestIdMiddlewareTest extends TestCase
 
         $request = new Request();
         $request->headers->set('Request-ID', $uuid);
-        $response = (new RequestIdMiddleware())->handle($request, function ($request) {
+        $response = (new ClientRequestIdMiddleware())->handle($request, function ($request) {
             return new Response();
         });
 

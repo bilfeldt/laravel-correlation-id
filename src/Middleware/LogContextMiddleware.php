@@ -21,6 +21,7 @@ class LogContextMiddleware
         Log::shareContext([
             'correlation_id' => $request->getCorrelationId(),
             'client_request_id' => $request->getClientRequestId(),
+            'request_id' => $request->getUniqueId(),
         ]);
 
         return $next($request);
