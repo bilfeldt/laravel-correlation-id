@@ -12,7 +12,6 @@ use Illuminate\Support\Str;
 class CorrelationIdServiceProvider extends ServiceProvider
 {
     public const PAYLOAD_KEY_CORRELATION_ID = 'correlation_id';
-    public const PAYLOAD_KEY_CLIENT_REQUEST_ID = 'client_request_id';
 
     public static function getClientRequestIdHeaderName(): string
     {
@@ -58,10 +57,6 @@ class CorrelationIdServiceProvider extends ServiceProvider
                 $payload['data'][self::PAYLOAD_KEY_CORRELATION_ID] = request()->getCorrelationId();
             }
 
-            if (! isset($payload['data'][self::PAYLOAD_KEY_CLIENT_REQUEST_ID])) {
-                $payload['data'][self::PAYLOAD_KEY_CLIENT_REQUEST_ID] = request()->getClientRequestId();
-            }
-
             return $payload;
         });
 
@@ -73,15 +68,10 @@ class CorrelationIdServiceProvider extends ServiceProvider
                 $request->headers->set(self::getCorrelationIdHeaderName(), $event->job->payload()['data'][self::PAYLOAD_KEY_CORRELATION_ID] ?? null);
             }
 
-            if (! $request->header(self::getClientRequestIdHeaderName())) {
-                $request->headers->set(self::getClientRequestIdHeaderName(), $event->job->payload()['data'][self::PAYLOAD_KEY_CLIENT_REQUEST_ID] ?? null);
-            }
-
             if (config('correlation-id.queue_context')) {
                 // Question, can we do this via the middleware instead?
                 Log::shareContext([
                     'correlation_id' => $event->job->payload()['data'][self::PAYLOAD_KEY_CORRELATION_ID] ?? null,
-                    'client_request_id' => $event->job->payload()['data'][self::PAYLOAD_KEY_CLIENT_REQUEST_ID] ?? null,
                     'request_id' => $request->getUniqueId(),
                 ]);
             }
