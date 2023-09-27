@@ -1,12 +1,12 @@
 <?php
 
-namespace Bilfeldt\CorrelationId\Tests\Unit;
+namespace Bilfeldt\CorrelationId\Tests\Feature;
 
 use Bilfeldt\CorrelationId\Middleware\CorrelationIdMiddleware;
+use Bilfeldt\CorrelationId\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
-use PHPUnit\Framework\TestCase;
 
 class CorrelationIdMiddlewareTest extends TestCase
 {

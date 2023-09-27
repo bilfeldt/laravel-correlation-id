@@ -58,7 +58,7 @@ protected $middleware = [
 
 ### Assigning Request ID to responses
 
-If the client provides a _Request ID_ in the request header, then it is good practice to copy that to the response header. This is done by adding the `RequestIdMiddleware` middleware globally in the `$middleware` property of your `app/Http/Kernel.php` class:
+If the client provides a _Request ID_ in the request header, then it is good practice to copy that to the response header. This is done by adding the `ClientRequestIdMiddleware` middleware globally in the `$middleware` property of your `app/Http/Kernel.php` class:
 
 ```php
 // app/Http/Kernel.php

@@ -33,6 +33,6 @@ class CorrelationIdMiddleware
 
     protected function shouldOverride(Request $request): bool
     {
-        return true;// TODO: Use config('correlation-id.correlation_override');
+        return config('correlation-id.correlation_override');
     }
 }

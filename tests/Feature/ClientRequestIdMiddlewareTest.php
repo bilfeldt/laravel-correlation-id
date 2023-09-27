@@ -1,14 +1,14 @@
 <?php
 
-namespace Bilfeldt\CorrelationId\Tests\Unit;
+namespace Bilfeldt\CorrelationId\Tests\Feature;
 
 use Bilfeldt\CorrelationId\Middleware\ClientRequestIdMiddleware;
+use Bilfeldt\CorrelationId\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
-use PHPUnit\Framework\TestCase;
 
-class RequestIdMiddlewareTest extends TestCase
+class ClientRequestIdMiddlewareTest extends TestCase
 {
     #[Test]
     public function test_adds_request_id_to_response_header(): void

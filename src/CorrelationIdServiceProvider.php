@@ -16,12 +16,12 @@ class CorrelationIdServiceProvider extends ServiceProvider
 
     public static function getClientRequestIdHeaderName(): string
     {
-        return 'Request-ID'; //TODO: use config: config('correlation-id.client_request_id_header');
+        return config('correlation-id.client_request_id_header');
     }
 
     public static function getCorrelationIdHeaderName(): string
     {
-        return 'Correlation-ID'; //TODO: use config: ('correlation-id.correlation_id_header');
+        return config('correlation-id.correlation_id_header');
     }
 
     /**
@@ -77,7 +77,7 @@ class CorrelationIdServiceProvider extends ServiceProvider
                 $request->headers->set(self::getClientRequestIdHeaderName(), $event->job->payload()['data'][self::PAYLOAD_KEY_CLIENT_REQUEST_ID] ?? null);
             }
 
-            if (true) { // TODO: Use config: config('correlation-id.queue_context')
+            if (config('correlation-id.queue_context')) {
                 // Question, can we do this via the middleware instead?
                 Log::shareContext([
                     'correlation_id' => $event->job->payload()['data'][self::PAYLOAD_KEY_CORRELATION_ID] ?? null,
