@@ -11,8 +11,8 @@ use Illuminate\Support\Str;
 
 class CorrelationIdServiceProvider extends ServiceProvider
 {
-    protected const PAYLOAD_KEY_CORRELATION_ID = 'correlation_id';
-    protected const PAYLOAD_KEY_CLIENT_REQUEST_ID = 'client_request_id';
+    public const PAYLOAD_KEY_CORRELATION_ID = 'correlation_id';
+    public const PAYLOAD_KEY_CLIENT_REQUEST_ID = 'client_request_id';
 
     public static function getClientRequestIdHeaderName(): string
     {

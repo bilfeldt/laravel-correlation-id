@@ -7,9 +7,10 @@ return [
     | Context for queue jobs
     |--------------------------------------------------------------------------
     |
-    | This value determines if the correlation id and client request id and
+    | This value determines if the correlation id, client request id and
     | request id should be added as global log context when a queued job is
-    | being processed.
+    | being processed. You can disable this and instead implement the
+    | LogContext job middleware for the those jobs that you want this for.
     |
     */
 
