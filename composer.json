@@ -4,7 +4,7 @@
     "keywords": [
         "bilfeldt",
         "Correlation ID",
-	"Request ID"
+	    "Request ID"
     ],
     "homepage": "https://github.com/bilfeldt/laravel-correlation-id",
     "license": "MIT",

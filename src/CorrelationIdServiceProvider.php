@@ -16,12 +16,12 @@ class CorrelationIdServiceProvider extends ServiceProvider
 
     public static function getClientRequestIdHeaderName(): string
     {
-        return config('correlation-id.client_request_id_header');
+        return 'Request-ID'; //TODO: use config: config('correlation-id.client_request_id_header');
     }
 
     public static function getCorrelationIdHeaderName(): string
     {
-        return config('correlation-id.correlation_id_header');
+        return 'Correlation-ID'; //TODO: use config: ('correlation-id.correlation_id_header');
     }
 
     /**
@@ -36,6 +36,10 @@ class CorrelationIdServiceProvider extends ServiceProvider
         }
 
         $this->bootQueueCallbacks();
+
+        $this->bootRequestGetUniqueIdMacro();
+        $this->bootRequestGetCorrelationIdMacro();
+        $this->bootRequestGetClientRequestIdMacro();
     }
 
     /**
@@ -44,12 +48,6 @@ class CorrelationIdServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'correlation-id');
-
-        $this->registerRequestGetUniqueIdMacro();
-
-        $this->registerRequestGetCorrelationIdMacro();
-
-        $this->registerRequestGetClientRequestIdMacro();
     }
 
     protected function bootQueueCallbacks(): void
@@ -79,7 +77,7 @@ class CorrelationIdServiceProvider extends ServiceProvider
                 $request->headers->set(self::getClientRequestIdHeaderName(), $event->job->payload()['data'][self::PAYLOAD_KEY_CLIENT_REQUEST_ID] ?? null);
             }
 
-            if (config('correlation-id.queue_context')) {
+            if (true) { // TODO: Use config: config('correlation-id.queue_context')
                 // Question, can we do this via the middleware instead?
                 Log::shareContext([
                     'correlation_id' => $event->job->payload()['data'][self::PAYLOAD_KEY_CORRELATION_ID] ?? null,
@@ -90,40 +88,40 @@ class CorrelationIdServiceProvider extends ServiceProvider
         });
     }
 
-    protected function registerRequestGetUniqueIdMacro(): void
+    protected function bootRequestGetUniqueIdMacro(): void
     {
-        if (Request::hasMacro('getUniqueId')) {
-            throw new \LogicException('Request::getUniqueId() macro already exists');
+        if (! Request::hasMacro('getUniqueId')) {
+            Request::macro('getUniqueId', function (): string {
+                if (! $this->attributes->has('uuid')) {
+                    $this->attributes->set('uuid', (string) Str::orderedUuid());
+                }
+
+                return $this->attributes->get('uuid');
+            });
+        } else {
+            Log::warning('Request::getUniqueId() already exists, skipping macro registration.');
         }
-
-        Request::macro('getUniqueId', function (): string {
-            if (! $this->attributes->has('uuid')) {
-                $this->attributes->set('uuid', (string) Str::orderedUuid());
-            }
-
-            return $this->attributes->get('uuid');
-        });
     }
 
-    protected function registerRequestGetCorrelationIdMacro(): void
+    protected function bootRequestGetCorrelationIdMacro(): void
     {
-        if (Request::hasMacro('getCorrelationId')) {
-            throw new \LogicException('Request::getCorrelationId() macro already exists');
+        if (! Request::hasMacro('getCorrelationId')) {
+            Request::macro('getCorrelationId', function (): ?string {
+                return $this->header(CorrelationIdServiceProvider::getCorrelationIdHeaderName());
+            });
+        } else {
+            Log::warning('Request::getCorrelationId() already exists, skipping macro registration.');
         }
-
-        Request::macro('getCorrelationId', function (): ?string {
-            return $this->header(CorrelationIdServiceProvider::getCorrelationIdHeaderName());
-        });
     }
 
-    protected function registerRequestGetClientRequestIdMacro(): void
+    protected function bootRequestGetClientRequestIdMacro(): void
     {
-        if (Request::hasMacro('getClientRequestId')) {
-            throw new \LogicException('Request::getClientRequestId() macro already exists');
+        if (! Request::hasMacro('getClientRequestId')) {
+            Request::macro('getClientRequestId', function (): ?string {
+                return $this->header(CorrelationIdServiceProvider::getClientRequestIdHeaderName());
+            });
+        } else {
+            Log::warning('Request::getClientRequestId() already exists, skipping macro registration.');
         }
-
-        Request::macro('getClientRequestId', function (): ?string {
-            return $this->header(CorrelationIdServiceProvider::getClientRequestIdHeaderName());
-        });
     }
 }
