@@ -4,7 +4,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/bilfeldt/laravel-correlation-id.svg?style=flat-square)](https://packagist.org/packages/bilfeldt/laravel-correlation-id)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/bilfeldt/laravel-correlation-id/run-tests?label=tests)](https://github.com/bilfeldt/laravel-correlation-id/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![StyleCI Code Style Status](https://github.styleci.io/repos/424928370/shield)](https://github.styleci.io/repos/424928370/shield)
+[![StyleCI Code Style Status](https://github.styleci.io/repos/692023533/shield)](https://github.styleci.io/repos/692023533/shield)
 [![Total Downloads](https://img.shields.io/packagist/dt/bilfeldt/laravel-correlation-id.svg?style=flat-square)](https://packagist.org/packages/bilfeldt/laravel-correlation-id)
 
 Create request Correlation-IDs via middleware and pass both this globally unique `Correlation-ID` and any user provided `Request-ID` to the global log context.
