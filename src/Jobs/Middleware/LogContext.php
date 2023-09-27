@@ -17,7 +17,6 @@ class LogContext
     {
         Log::shareContext([
             'correlation_id' => $job->payload()['data'][CorrelationIdServiceProvider::PAYLOAD_KEY_CORRELATION_ID] ?? null,
-            'client_request_id' => $job->payload()['data'][CorrelationIdServiceProvider::PAYLOAD_KEY_CLIENT_REQUEST_ID] ?? null,
             'request_id' => request()->getUniqueId(),
         ]);
 

@@ -53,5 +53,6 @@ class RequestMacroTest extends TestCase
 
         $this->assertTrue(Str::isUuid($uuid));
         $this->assertEquals($uuid, $request->getUniqueId());
+        $this->assertEquals($uuid, $request->getUniqueId()); // Assert calling the function twice returns the same value
     }
 }

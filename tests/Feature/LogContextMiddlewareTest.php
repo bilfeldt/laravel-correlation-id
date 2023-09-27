@@ -18,31 +18,25 @@ class LogContextMiddlewareTest extends TestCase
         $request = new Request();
         $request->headers->set('Correlation-ID', $id);
         $response = (new LogContextMiddleware())->handle($request, function ($request) use ($id) {
-            $this->assertArrayHasKey('client_request_id', Log::sharedContext());
+            $this->assertArrayHasKey('correlation_id', Log::sharedContext());
             $this->assertEquals($id, Log::sharedContext()['correlation_id']); // Assert context is set BEFORE the request is processed.
 
             return new Response();
         });
 
-        $this->assertArrayHasKey('client_request_id', Log::sharedContext());
+        $this->assertArrayHasKey('correlation_id', Log::sharedContext());
         $this->assertEquals($id, Log::sharedContext()['correlation_id']); // Assert context is set AFTER the request is processed.
     }
 
     #[Test]
-    public function test_adds_client_request_id_to_log_context(): void
+    public function test_adds_request_id_to_log_context(): void
     {
-        $id = 'test-request-id';
-
         $request = new Request();
-        $request->headers->set('Request-ID', $id);
-        $response = (new LogContextMiddleware())->handle($request, function ($request) use ($id) {
-            $this->assertArrayHasKey('client_request_id', Log::sharedContext());
-            $this->assertEquals($id, Log::sharedContext()['client_request_id']); // Assert context is set BEFORE the request is processed.
-
+        $response = (new LogContextMiddleware())->handle($request, function ($request) {
             return new Response();
         });
 
-        $this->assertArrayHasKey('client_request_id', Log::sharedContext());
-        $this->assertEquals($id, Log::sharedContext()['client_request_id']); // Assert context is set AFTER the request is processed.
+        $this->assertArrayHasKey('request_id', Log::sharedContext());
+        $this->assertEquals($request->getUniqueId(), Log::sharedContext()['request_id']); // Assert context is set AFTER the request is processed.
     }
 }

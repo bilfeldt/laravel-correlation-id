@@ -168,7 +168,6 @@ protected function context(): array
 {
     return array_merge(parent::context(), [
         'correlation_id' => request()->getCorrelationId(),
-        'client_request_id' => request()->getClientRequestId(),
         'request_id' => request()->getUniqueId(),
     ]);
 }
