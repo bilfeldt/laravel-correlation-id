@@ -24,6 +24,14 @@ class RequestMacroTest extends TestCase
         $this->assertEquals('test-correlation-id', $request->getCorrelationId());
     }
 
+    public function test_correlation_id_is_sanitize(): void
+    {
+        $request = new Request();
+        $request->headers->set('Correlation-ID', 'this-SHOULD-be-<sanitized>% !-in-a-good-123-implementation');
+
+        $this->assertEquals('this-SHOULD-be-sanitized-in-a-good-123-implementation', $request->getCorrelationId());
+    }
+
     public function test_request_macro_get_client_request_id_is_registered()
     {
         $this->assertTrue((new Request())->hasMacro('getClientRequestId'));
@@ -38,6 +46,14 @@ class RequestMacroTest extends TestCase
         $request->headers->set('Request-ID', 'test-request-id');
 
         $this->assertEquals('test-request-id', $request->getClientRequestId());
+    }
+
+    public function test_client_request_id_is_sanitize(): void
+    {
+        $request = new Request();
+        $request->headers->set('Request-ID', 'this-SHOULD-be-<sanitized>% !-in-a-good-123-implementation');
+
+        $this->assertEquals('this-SHOULD-be-sanitized-in-a-good-123-implementation', $request->getClientRequestId());
     }
 
     public function test_request_macro_get_unique_id_is_registered()

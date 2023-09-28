@@ -13,6 +13,9 @@ class CorrelationIdServiceProvider extends ServiceProvider
 {
     public const PAYLOAD_KEY_CORRELATION_ID = 'correlation_id';
 
+    // Remove all characters that are not the dash, letters, numbers, or whitespace
+    public static string $sanitize = '/[^a-zA-Z0-9-]/';
+
     public static function getClientRequestIdHeaderName(): string
     {
         return config('correlation-id.client_request_id_header');
@@ -97,7 +100,12 @@ class CorrelationIdServiceProvider extends ServiceProvider
     {
         if (! Request::hasMacro('getCorrelationId')) {
             Request::macro('getCorrelationId', function (): ?string {
-                return $this->header(CorrelationIdServiceProvider::getCorrelationIdHeaderName());
+                if (! $this->hasHeader(CorrelationIdServiceProvider::getCorrelationIdHeaderName())) {
+                    return null;
+                }
+
+                // Sanitize the correlation id as a safety precaution
+                return preg_replace(CorrelationIdServiceProvider::$sanitize, '', $this->header(CorrelationIdServiceProvider::getCorrelationIdHeaderName()));
             });
         } else {
             Log::warning('Request::getCorrelationId() already exists, skipping macro registration.');
@@ -108,7 +116,12 @@ class CorrelationIdServiceProvider extends ServiceProvider
     {
         if (! Request::hasMacro('getClientRequestId')) {
             Request::macro('getClientRequestId', function (): ?string {
-                return $this->header(CorrelationIdServiceProvider::getClientRequestIdHeaderName());
+                if (! $this->hasHeader(CorrelationIdServiceProvider::getClientRequestIdHeaderName())) {
+                    return null;
+                }
+
+                // Sanitize the correlation id as a safety precaution
+                return preg_replace(CorrelationIdServiceProvider::$sanitize, '', $this->header(CorrelationIdServiceProvider::getClientRequestIdHeaderName()));
             });
         } else {
             Log::warning('Request::getClientRequestId() already exists, skipping macro registration.');
