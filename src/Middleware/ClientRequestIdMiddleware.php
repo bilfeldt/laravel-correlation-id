@@ -13,11 +13,15 @@ class ClientRequestIdMiddleware
      * Handle an incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
-     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request)->header(CorrelationIdServiceProvider::getClientRequestIdHeaderName(), $request->getClientRequestId());
+        $response = $next($request);
+
+        $response->headers->set(CorrelationIdServiceProvider::getClientRequestIdHeaderName(), $request->getClientRequestId());
+
+        return $response;
     }
 }

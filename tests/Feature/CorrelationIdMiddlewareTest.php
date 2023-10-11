@@ -7,6 +7,7 @@ use Bilfeldt\CorrelationId\Tests\TestCase;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class CorrelationIdMiddlewareTest extends TestCase
 {
@@ -31,6 +32,18 @@ class CorrelationIdMiddlewareTest extends TestCase
         $request = new Request();
         $response = (new CorrelationIdMiddleware())->handle($request, function ($request) {
             return new Response();
+        });
+
+        $this->assertTrue($response->headers->has('Correlation-ID'));
+        $this->assertEquals($response->headers->get('Correlation-ID'), $request->header('Correlation-ID'));
+    }
+
+    public function test_works_with_binary_file_response(): void
+    {
+        $request = new Request();
+
+        $response = (new CorrelationIdMiddleware())->handle($request, function ($request) {
+            return new BinaryFileResponse(__DIR__.'/../fixtures/dummy.pdf');
         });
 
         $this->assertTrue($response->headers->has('Correlation-ID'));
