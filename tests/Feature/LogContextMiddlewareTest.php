@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Log;
 
 class LogContextMiddlewareTest extends TestCase
 {
-    #[Test]
     public function test_adds_request_correlation_id_to_log_context(): void
     {
         $id = 'test-correlation-id';
@@ -28,7 +27,6 @@ class LogContextMiddlewareTest extends TestCase
         $this->assertEquals($id, Log::sharedContext()['correlation_id']); // Assert context is set AFTER the request is processed.
     }
 
-    #[Test]
     public function test_adds_request_id_to_log_context(): void
     {
         $request = new Request();

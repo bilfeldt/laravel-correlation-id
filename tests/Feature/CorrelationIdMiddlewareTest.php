@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class CorrelationIdMiddlewareTest extends TestCase
 {
-    #[Test]
     public function test_adds_request_correlation_id_header(): void
     {
         $uuid = Str::orderedUuid();
@@ -26,7 +25,6 @@ class CorrelationIdMiddlewareTest extends TestCase
         $this->assertEquals($uuid, $request->headers->get('Correlation-ID'));
     }
 
-    #[Test]
     public function test_adds_response_correlation_id_header(): void
     {
         $request = new Request();
