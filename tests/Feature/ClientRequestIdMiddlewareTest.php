@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class ClientRequestIdMiddlewareTest extends TestCase
 {
-    #[Test]
     public function test_adds_request_id_to_response_header(): void
     {
         $uuid = Str::orderedUuid();
