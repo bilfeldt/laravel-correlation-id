@@ -2,7 +2,11 @@
 
 All notable changes will be documented in this file
 
-## 1.1.0 - 2024-01-007
+## 1.2.0 - 2024-02-27
+
+- Add Laravel 11 support
+
+## 1.1.0 - 2024-01-07
 
 - Add PHP 8.3 compatibility
 
