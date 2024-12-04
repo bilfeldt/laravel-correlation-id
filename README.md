@@ -9,9 +9,9 @@
 
 Create request Correlation-IDs via middleware and pass both this globally unique `Correlation-ID` and any user provided `Request-ID` to the global log context.
 
-| Version | Laravel      | PHP                     |
-|---------|--------------|-------------------------|
-| 1.*     | 10.* \| 11.* | 8.1.* \| 8.2.* \| 8.3.* |
+| Version | Laravel      | PHP                              |
+|---------|--------------|----------------------------------|
+| 1.*     | 10.* \| 11.* | 8.1.* \| 8.2.* \| 8.3.* \| 8.4.* |
 
 ## Motivation
 
