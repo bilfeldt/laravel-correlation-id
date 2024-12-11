@@ -30,9 +30,28 @@ composer require bilfeldt/laravel-correlation-id
 ### Assigning Correlation ID to requests
 
 > [!NOTE]
-> Ideally, the unique Correlation ID should be created at the **very first touch point** of your infrastructure like the initial server which could be a load balancer
+> Ideally, the unique Correlation ID should be created at the **very first touch point** of your infrastructure like the initial server which could be a load balancer.
 
-As it can be tricky to create _Correlation ID_ on the server level and this is so easy in Laravel using middleware. This package provides a middleware for creating a _Correlation ID_ and attaching it to the request as a header `Correlation-ID` and to the response header as well. You should either assign the correlation id on the first touch point of your infrastructure or register the `CorrelationIdMiddleware` middleware globally as the first middleware in the `$middleware` property of your `app/Http/Kernel.php` class:
+As it can be tricky to create _Correlation ID_ on the server level (I do accept a PR with suggestions on how to do this in Nginx 😃) and this is so easy in Laravel using middleware. This package provides a middleware for creating a _Correlation ID_ and attaching it to the request as a header `Correlation-ID` and to the response header as well. You should assign the correlation id using a global middleware pushed as the first middleware to be applied.
+
+#### Laravel 11
+
+Registering a global middleware in Laravel 11 is done in the `bootstrap/app.php` file:
+
+```php
+// bootstrap/app.php
+
+use App\Http\Middleware\EnsureTokenIsValid;
+use Bilfeldt\CorrelationId\Middleware\CorrelationIdMiddleware
+ 
+->withMiddleware(function (Middleware $middleware) {
+     $middleware->prepend(CorrelationIdMiddleware::class);
+})
+```
+
+#### Laravel 10 and below
+
+In Laravel 10 and below then a global middleware is added in the `$middleware` property in `app/Http/Kernel.php`:
 
 ```php
 // app/Http/Kernel.php
