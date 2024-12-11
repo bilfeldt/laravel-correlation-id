@@ -91,8 +91,6 @@ class CorrelationIdServiceProvider extends ServiceProvider
 
                 return $this->attributes->get('uuid');
             });
-        } else {
-            Log::warning('Request::getUniqueId() already exists, skipping macro registration.');
         }
     }
 
@@ -107,8 +105,6 @@ class CorrelationIdServiceProvider extends ServiceProvider
                 // Sanitize the correlation id as a safety precaution
                 return preg_replace(CorrelationIdServiceProvider::$sanitize, '', $this->header(CorrelationIdServiceProvider::getCorrelationIdHeaderName()));
             });
-        } else {
-            Log::warning('Request::getCorrelationId() already exists, skipping macro registration.');
         }
     }
 
@@ -123,8 +119,6 @@ class CorrelationIdServiceProvider extends ServiceProvider
                 // Sanitize the correlation id as a safety precaution
                 return preg_replace(CorrelationIdServiceProvider::$sanitize, '', $this->header(CorrelationIdServiceProvider::getClientRequestIdHeaderName()));
             });
-        } else {
-            Log::warning('Request::getClientRequestId() already exists, skipping macro registration.');
         }
     }
 }
