@@ -2,6 +2,10 @@
 
 All notable changes will be documented in this file
 
+## 1.4.0 - 2025-02-17
+
+- Add Laravel 12 support
+
 ## 1.3.0 - 2024-12-04
 
 - Add PHP 8.4 support
