@@ -2,7 +2,7 @@
 
 All notable changes will be documented in this file
 
-## 1.3.0 - 2025-03-05
+## 1.6.0 - 2025-03-05
 
 - Add Laravel 13 support
 
