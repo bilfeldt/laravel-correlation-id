@@ -2,6 +2,10 @@
 
 All notable changes will be documented in this file
 
+## 1.3.0 - 2025-03-05
+
+- Add Laravel 13 support
+
 ## 1.5.0 - 2025-11-28
 
 - Add PHP 8.5 support
